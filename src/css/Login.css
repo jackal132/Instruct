@@ -1,0 +1,69 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'BrannbollStencil';
+    src:url('../font/BrannbollStencil_PERSONAL_USE.ttf') format('truetype');
+}
+
+.loginMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-image: url(../img/backgroundimg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.loginForm {
+    margin: auto;
+    width: 550px;
+    height: 250px;
+    text-align: center;
+    box-shadow: 2px 2px 5px #999;
+}
+
+.loginTitle {
+    font-family: BrannbollStencil;
+    font-size: 50px;
+    font-weight: 900;
+    margin: 10px;
+    text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 0px -3px 20px rgba(255,255,255,0.4);
+}
+
+.loginForm .item {
+    font-family: BrannbollStencil;
+    margin: 10px 40px 10px 40px;
+    padding: 20px;
+    font-weight: 900;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.facebookBtn {
+    background-color: #3B5998;
+}
+
+.facebookBtn:hover {
+    background-color: #3b5998ba;
+}
+
+.googleBtn {
+    background-color: #FF3E30;
+}
+
+.googleBtn:hover {
+    background-color: #ff3e30b8;
+}
