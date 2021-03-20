@@ -2,13 +2,28 @@ import '../css/Login.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+    let history = useHistory();
+    const [loggedIn, setLoggedIn] = useState(false);
 
-    const onFacebook = (response) => {
-        axios.post('/login/facebook', response)
+    useEffect(() => {
+
+        window.sessionStorage.getItem('_id') ? setLoggedIn(true) : setLoggedIn(false);
+
+        if(loggedIn){
+            history.push('/room');
+        }
+    },[loggedIn, history]);
+
+    const onFacebook = async (response) => {
+        await axios.post('/login/facebook', response)
             .then(res => {
-                console.log(res);
+                window.sessionStorage.setItem('_id', res.data.loginInfo._id);
+                window.sessionStorage.setItem('username', res.data.loginInfo.username);
+                history.push('/room');
             });
     }
 
@@ -27,7 +42,6 @@ const Login = () => {
 
                 <FacebookLogin
                     appId="205833144355071"
-                    autoLoad
                     callback={onFacebook}
                     render={renderProps => (
                         <div className="item facebookBtn" onClick={renderProps.onClick}>Login with Facebook</div>

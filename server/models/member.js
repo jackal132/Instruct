@@ -7,4 +7,6 @@ const MemberSchema = new Schema({
     createAt : { type:Date, default:Date.now }
 });
 
+MemberSchema.index({id:1});
+
 module.exports = mongoose.model('Member', MemberSchema);
