@@ -206,3 +206,89 @@ body {
     font-size: 12px;
     color: white;
 }
+
+.modalOverlay {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+.modalWrapper {
+    box-sizing : border-box;
+    display : block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+}
+
+.modalInner {
+    box-sizing: border-box;
+    position: relative;
+    background-color: #ffffffc2;
+    width : 360px;
+    max-width: 480px;
+    top : 50%;
+    transform: translateY(-50%);
+    margin : 0 auto;
+    padding: 20px 20px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalClose {
+    display: flex;
+    flex-direction : row-reverse;
+}
+
+.closeImg {
+    width : 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.modalInputWrapper {
+    display: flex;
+}
+
+.modalInputWrapper > input:focus {
+    outline: none;
+}
+
+.modalInput {
+    margin-right: 5px;
+    width: 200px;
+    padding : 5px;
+    border : 1px solid lightgray;
+}
+
+.modalBtn {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-family: BrannbollStencil;
+    font-size: 15px;
+}
+
+.modalBtn:focus {
+    outline: none;
+}
+
+.modalBtn:active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
