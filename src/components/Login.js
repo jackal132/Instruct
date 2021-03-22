@@ -27,8 +27,13 @@ const Login = () => {
             });
     }
 
-    const onGoogleSuccess = (result) => {
-        console.log(result);
+    const onGoogleSuccess = async (result) => {
+        await axios.post('/login/google', result.profileObj)
+            .then(res => {
+                window.sessionStorage.setItem('_id', res.data.loginInfo._id);
+                window.sessionStorage.setItem('username', res.data.loginInfo.username);
+                history.push('/room');
+            });
     }
 
     const onGoogleFailure = (result) => {

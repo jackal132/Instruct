@@ -16,6 +16,7 @@ app.use(session({
     secret: COOKIE_SECRET
 }));
 
-app.use('/login', require('./routes/login.js'));
+app.use('/login', require('./routes/login'));
+app.use('/room', require('./routes/room'));
 
 app.listen(SERVER_PORT, () => { console.log(`Listening on port ${SERVER_PORT}`) });

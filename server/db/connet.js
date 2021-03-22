@@ -5,7 +5,7 @@ require('dotenv').config({path: path.join(__dirname, '../../.env')});
 module.exports = () => {
     function connect() {
         mongoose.connect(process.env['MONGODB_URI'],
-        { useNewUrlParser: true,  useUnifiedTopology: true },     
+        { useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex : true },     
         err => {
             if(err){
                 console.error('mongodb connection error', err);

@@ -35,7 +35,35 @@ router.post('/facebook', (req, res) => {
 });
 
 router.post('/google', (req, res) => {
+    Member.findOne({id : req.body.googleId}, (err, doc) => {
+        if(err) throw err;
+        // 아이디가 없는경우
+        if(!doc) {
+            let member = new Member({
+                id : req.body.googleId,
+                name : req.body.name
+            });
+            member.save(e => {
+                if(e) throw e;
 
+                let loginInfo = {
+                    _id : req.body.googleId,
+                    username : req.body.name
+                }
+
+                return res.status(200).send({ loginInfo : loginInfo});
+            });
+        
+        // 아이디가 있는경우
+        } else {
+            let loginInfo = {
+                _id : req.body.googleId,
+                username : req.body.name
+            }
+            return res.status(200).send({ loginInfo : loginInfo });
+        }
+       
+    });
 });
 
 module.exports = router;

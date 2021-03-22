@@ -1,0 +1,208 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'BrannbollStencil';
+    src:url('../font/BrannbollStencil_PERSONAL_USE.ttf') format('truetype');
+}
+
+.main {
+    background-image: url(../img/backgroundimg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 100vh;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+}
+
+.bg {
+    background-color: rgba(0,0,0,0.5);
+    max-height: 100vh;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainTitle {
+    font-family: BrannbollStencil;
+    font-size: 50px;
+    font-weight: 900;
+    text-align: center;
+    margin: 20px;
+    color: white;
+}
+
+.memberInfo {
+    display: flex;
+    justify-content: flex-end;
+    margin : 5px 20% 5px auto;
+}
+
+.memberInfo > div {
+    padding: 10px ;
+}
+
+.memberName {
+    color: white;
+    font-size: 12px;
+}
+
+.history {
+    background-image: url(../img/icon/history_img.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;	
+    margin: 3px;
+}
+
+.content {
+    margin-top : 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentLayout {
+    width:60%;
+    border:1px solid #999;
+    box-shadow: 2px 2px 5px #272727;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+}
+
+.createArea {
+    display: flex;
+    justify-content: flex-end;
+    margin : 5px 20px 5px auto;
+    height: 30px;
+}
+
+.creactBtn {
+    background-image: url(../img/icon/plus_w.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/*.creactBtn:hover {
+    background-image: url(./icon/plus_b.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}*/
+
+.roomListArea {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roomList {
+    width: 95%;
+    height: 95%;
+    display: flex;
+}
+
+.roomUl {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+}
+
+.roomLi {
+    padding: 5px;
+    height: 70px;
+}
+
+.roomInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.room {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80%;
+}
+
+.roomTitle {
+    font-size: 15px;
+    color: white;
+    flex-grow: 5;
+}
+
+.roomTitle > p {
+    padding-left: 5px;
+}
+
+.countInfo {
+    width: 10%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.userIcon {
+    background-image: url(../img/icon/user.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.headCount {
+    font-size: 12px;
+    color: white;
+}
+
+.createDt {
+    margin-right: 5px;
+    text-align: right;
+    font-size: 12px;
+    color: white;
+}

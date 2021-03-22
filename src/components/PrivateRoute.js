@@ -1,6 +1,6 @@
 import { Route, Redirect, BrowserRouter } from 'react-router-dom';
 import Login from './Login';
-import Room from './Room';
+import RoomMain from './RoomMain';
 
 const PrivateRoute = () => {
 
@@ -12,10 +12,10 @@ const PrivateRoute = () => {
                 {loggedIn ? <Redirect to="/room"/> : <Redirect to="/login"/>}
             </Route>
             <Route path="/login" component={Login}/>
-            <Route path="/room" component={Room}/>
+            <Route path="/room" component={RoomMain}/>
         </BrowserRouter>
     );
-    
+     
 };
 
 export default PrivateRoute;
