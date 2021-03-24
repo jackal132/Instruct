@@ -9,27 +9,36 @@ const RoomMain = () => {
 	const username = window.sessionStorage.getItem('username');
 	const [ rommInfo, setRoomIfo ] = useState([]);
 	const [ visibility, setVisibility] = useState(false);
+	const [ fetching, setFetching ] = useState(true);
 
 	useEffect(() => {
-		getRoomList();
-	},[rommInfo]);
+		
+		if(fetching === true) {
+			getRoomList();
+		}
 
-	// 방 목록 조회
-	const getRoomList = async () => {
-		await axios.get('/room')
-				.then(res => {
-					setRoomIfo(res.data);
-				});
-	};
+		return () => ( setFetching(false));
+
+	},[fetching]);
 
 	// 모달 오픈
-	const openModal = () => {
+	const openModal = async () => {
 		setVisibility(true);
 	}
 
 	// 모달 클로즈
-	const closeModal = () => {
+	const closeModal = async () => {
 		setVisibility(false);
+	}
+
+	// 방 목록 조회
+	const getRoomList = async () => {
+		await axios.get('/room')
+			.then(res => {
+				if(res.status === 200) {
+					setRoomIfo(res.data);
+				}
+			});
 	}
 
     return (
@@ -64,7 +73,7 @@ const RoomMain = () => {
 					</div>
 				</div>
 			</div>
-			<RoomModal visible={visibility} close={closeModal}/>
+			<RoomModal visible={visibility} close={closeModal} />
 		</div>
     );    
 }

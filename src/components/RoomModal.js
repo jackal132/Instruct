@@ -1,13 +1,17 @@
+import axios from 'axios';
 import { useState } from 'react';
 import '../css/RoomMain.css';
 import closeImg from '../img/close.png';
+import { useHistory } from 'react-router-dom';
 
 const RoomModal = (props) => {
     
     const { visible, close } = props;
     const [ roomTitle, setRoomTitle ] = useState('');
 
-    const handleClose = () => {
+    let history = useHistory();
+
+    const handleClose = async () => {
         setRoomTitle('');
         
         // 도큐먼트 내에 모든 input을 조회하여 초기화
@@ -24,9 +28,25 @@ const RoomModal = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setRoomTitle('');
-        e.target.reset();
-        close();
+
+        const data = {
+            roomTitle : roomTitle,
+            createId : window.sessionStorage.getItem('_id')
+        }
+
+        axios.post('/room', data)
+                .then(res => {
+                    console.log(res.data.message, res.data.roomId);
+
+                    if(res.data.roomId === ''){
+                        alert(res.data.message);
+                    } else {
+                        history.push(`/room/${res.data.roomId}`);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });         
     }
 
     return (
