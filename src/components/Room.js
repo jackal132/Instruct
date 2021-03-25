@@ -5,11 +5,13 @@ import ParticipantWrap from './ParticipantWrap';
 import WriteWrap from './WriteWrap';
 import io from 'socket.io-client';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 let socket;
-const username = window.sessionStorage.getItem('username');
 
 const Room = ({match}) => {
+    const username = window.sessionStorage.getItem('username');
+    const _id = window.sessionStorage.getItem('_id');
     
     const [chatMessage, setChatMessage] = useState('');
     const [chatMessages, setChatMessages] = useState([]);
@@ -17,16 +19,18 @@ const Room = ({match}) => {
     const [users, setUsers] = useState('');
     const roomId = match.params.roomId;
 
+    let history = useHistory();
+
     useEffect(() => {
         socket = io('/');
 
-        socket.emit('join', {username, roomId}, (err) => {
+        socket.emit('join', {_id, username, roomId}, (err) => {
             if(err) {
                 setFlag(true);
                 alert(err);
             }
         })
-    }, [roomId]);
+    }, [roomId, username, _id]);
 
     useEffect(() => {
         socket.on('message', chatMessage => {
@@ -51,7 +55,12 @@ const Room = ({match}) => {
     }
 
     if(flag) {
-        return ( <Redirect to="/"/> )
+        return <Redirect to="/"/>;
+    }
+
+    const onClickCloseBtn = () => {
+        socket.close();
+        history.push('/room');
     }
 
     return (
@@ -73,7 +82,8 @@ const Room = ({match}) => {
 
                     <WriteWrap handleChange={handleChange} handleSubmit={handleSubmit} chatMessage={chatMessage}/>
                 </div>
-                <div className="closeBtn"></div>
+                
+                <div className="closeBtn" onClick={onClickCloseBtn}/>
             </div>
         </div>
     );

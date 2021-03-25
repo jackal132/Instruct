@@ -1,13 +1,13 @@
 const users = [];
 
-const addUser = ({id, username, roomId}) => {
+const addUser = ({userId, id, username, roomId}) => {
     
     const exist = users.find((user) => user.roomId === roomId && user.username === username);
-
+    console.log(username, roomId);
     if(!username || !roomId) return { err : 'Username and room are required.'};
     if(exist) return { err : 'Already exist User'};
 
-    const user = { id, username, roomId };
+    const user = { userId, id, username, roomId };
 
     users.push(user);
 
@@ -22,6 +22,8 @@ const removeUser = (id) => {
 
 const getUser = (id) => users.find((user) => user.id === id);
 
+const getUserByUserId = (id) => users.find((user) => user.userId === id);
+
 const getUsersInRoom = (roomId) => users.filter((user) => user.roomId === roomId);
 
-module.exports = { addUser, removeUser, getUser, getUsersInRoom };
+module.exports = { addUser, removeUser, getUser, getUserByUserId, getUsersInRoom };

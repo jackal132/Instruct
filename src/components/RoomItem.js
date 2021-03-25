@@ -1,10 +1,16 @@
 import '../css/RoomMain.css';
+import { useHistory } from 'react-router-dom';
 const RoomItem = (props) => {
 
     const { room } = props;
+    let history = useHistory();
+
+    const onClickRoom = () =>{
+        history.push(`/room/${room._id}`);
+    }
     
     return (
-        <li className="roomLi">
+        <li className="roomLi" onClick={onClickRoom}>
             <div className="roomInfo">
                 <div className="room">
                     <div className="roomTitle">

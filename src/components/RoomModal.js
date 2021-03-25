@@ -26,7 +26,7 @@ const RoomModal = (props) => {
         setRoomTitle(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const data = {
@@ -34,7 +34,7 @@ const RoomModal = (props) => {
             createId : window.sessionStorage.getItem('_id')
         }
 
-        axios.post('/room', data)
+        await axios.post('/room', data)
                 .then(res => {
                     console.log(res.data.message, res.data.roomId);
 

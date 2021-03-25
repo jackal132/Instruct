@@ -12,7 +12,7 @@ const RoomMain = () => {
 	const [ fetching, setFetching ] = useState(true);
 
 	useEffect(() => {
-		
+		setFetching(true)
 		if(fetching === true) {
 			getRoomList();
 		}
@@ -20,6 +20,8 @@ const RoomMain = () => {
 		return () => ( setFetching(false));
 
 	},[fetching]);
+
+	// useEffect(() => {getRoomList()},[]);
 
 	// 모달 오픈
 	const openModal = async () => {
@@ -73,7 +75,7 @@ const RoomMain = () => {
 					</div>
 				</div>
 			</div>
-			<RoomModal visible={visibility} close={closeModal} />
+			<RoomModal visible={visibility} close={closeModal}/>
 		</div>
     );    
 }

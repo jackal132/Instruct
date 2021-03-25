@@ -1,10 +1,18 @@
 import '../css/Room.css';
 
-const ParticipantWrap = () => {
+const ParticipantWrap = (props) => {
+    
+    const { users } = props;
+    let userList = [];
+    if( users !== undefined && users.length !==0) {
+        userList = users.map((user, index) => 
+            <div key={index}>{user.username}</div>
+        );
+    }
+
     return (
         <div className="participantWrap">
-            <div>홍길동</div>
-            <div>국제부</div>
+            {userList}
         </div>
     );
 }
