@@ -1,62 +1,57 @@
-import { Component } from "react";
-import GoogleLogin from 'react-google-login';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-// import axios from 'axios';
+import { useEffect, useState } from "react";
 
+const Test = () => {
 
-class Test extends Component {
+    const [divTop, setDivTop] = useState(0);
+    const [divLeft, setDivLeft] = useState(0);
+    const [flag, setFlag] = useState(false);
 
-    responseFacebook = (response) => {
-        console.log(response);
+    useEffect(() =>{
+    },[divTop, divLeft, flag])
+
+    const divStyle = {
+        display: "flex",
+        flexDirection: 'column',
+        justifyContent: 'center',
+        border: "1px solid black",
+        width: "100px",
+        height: "50px",
+        left: "0",
+        right: "0",
+        top: "0",
+        bottom: "0",
+        margin: "auto",
+        position: "fixed",
+        cursor: "pointer",
+        background: 'white'
     }
 
-    responseGoogle = (response) => {
-        console.log(response);
-    };
+    const onClickDiv = (e) => {
+        setDivTop(e.clientY - 20);
+        setDivLeft(e.clientX - 20);
+        setFlag(!flag);
+    }
 
-    failGoogle = (response) => {
-        console.log(response);
-    };
-
-    // state = {
-    //     message : 'CallApi'
-    // }
-
-    // callApi = async () => {
-    //     axios.get('/api', {})
-    //     .then(res => {
-    //         this.setState({message:res.data.message});
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     })
-    // }
-
-    render(){
-        return (
-            <div>
-                <GoogleLogin
-                    clientId="257288724463-01k92lm3153irho0i97p0cnj2tuqt2qc.apps.googleusercontent.com"
-                    onSuccess={result => this.responseGoogle(result)}
-                    onFailure={result => this.failGoogle(result)}
-                    cookiePolicy={'single_host_origin'}
-                    render={renderProps => (
-                        <button onClick={renderProps.onClick} disabled={renderProps.disabled}>GoogleButton</button>
-                    )}
-                />
-
-                <FacebookLogin
-                    appId="205833144355071"
-                    autoLoad
-                    callback={this.responseFacebook}
-                    render={renderProps => (
-                        <button onClick={renderProps.onClick}>FacebookButton</button>
-                    )}
-                />
+    return (
+        <div>
+            <div style={divStyle} onClick={onClickDiv}>선택하세요.</div>
+            <div style={
+                {
+                    display : flag === true ? 'block' : 'none',
+                    top : divTop,
+                    left : divLeft,
+                    position: 'absolute',
+                    background: '#e6e6e6',
+                    width : '180px',
+                    margin: '5px'
+                }
+            }>
+                <p style={{
+                    textAlign : 'center'
+                }}>이내용을 링크로 열기</p>
             </div>
-            // <button onClick={this.callApi}>{this.state.message}</button>
-        )
-    }
+        </div>
+    );
 }
 
 export default Test;

@@ -21,8 +21,6 @@ const RoomMain = () => {
 
 	},[fetching]);
 
-	// useEffect(() => {getRoomList()},[]);
-
 	// 모달 오픈
 	const openModal = async () => {
 		setVisibility(true);
@@ -53,7 +51,7 @@ const RoomMain = () => {
 					{/* <!-- 로그인 회원 정보 --> */}
 					<div className="memberInfo">
 						<div className="memberName">{username}</div>
-						<div className="history"></div>
+						{/* <div className="history"></div> */}
 					</div>
 
 					{/* <!-- 내용 --> */}

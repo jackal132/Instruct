@@ -23,6 +23,7 @@ const Login = () => {
             .then(res => {
                 window.sessionStorage.setItem('_id', res.data.loginInfo._id);
                 window.sessionStorage.setItem('username', res.data.loginInfo.username);
+                window.sessionStorage.setItem('accessToken', response.accessToken);
                 history.push('/room');
             });
     }
@@ -32,6 +33,7 @@ const Login = () => {
             .then(res => {
                 window.sessionStorage.setItem('_id', res.data.loginInfo._id);
                 window.sessionStorage.setItem('username', res.data.loginInfo.username);
+                window.sessionStorage.setItem('accessToken', result.accessToken);
                 history.push('/room');
             });
     }

@@ -3,10 +3,10 @@ import ChatItem from './ChatItem';
 
 const ChatWindow = (props) => {
 
-    const { chatMessages } = props;
+    const { chatMessages, handleMessage } = props;
 
     const chatItems = chatMessages.map((message, index) => 
-        <ChatItem message={message} key={index}/>
+        <ChatItem message={message} handleMessage={handleMessage} key={index}/>
     );
 
     return (

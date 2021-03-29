@@ -139,3 +139,74 @@
     border-radius: 3px;
     line-height: 2;
 }
+
+.youtubeOverlay {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}	
+
+.youtubeInner {
+    display: flex;
+    min-height: 100vh;
+    min-width : 100vh;
+    align-items: center;
+}
+
+.youtubeList {
+    display: flex;
+    width: 100%;
+    height: 30rem;
+    min-width: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.youtubeItem {
+    background: #516f7d;
+    height : 25rem;
+    width : 50rem;
+    margin : 10px;
+    padding : 10px;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.youtubeThumbnail {
+    width: 100%;
+    height: 18em;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.youtubeImg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.youtubeText {
+    padding : 5px;
+    color: white;
+}
+
+.closeYoutubeBtn {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    top: 50px;
+    right: 40px;
+    background-image: url(../img/close_w.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
